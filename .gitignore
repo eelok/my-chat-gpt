@@ -1,3 +1,5 @@
 .env
 curl.sh
 node_modules
+.vscode
+my-chat-gpt.code-workspace
