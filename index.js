@@ -54,6 +54,17 @@ app.post('/ask', async (req, res) => {
   }
 });
 
+app.get('/conversation', (req, res) => {
+  console.log('repository', repository);
+  if (Object.keys(repository).length === 0) {
+    return res.status(400).json({
+      success: true,
+      message: 'The conversation is empty :(',
+    });
+  }
+  return res.status(200).send(repository);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
