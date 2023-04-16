@@ -6,8 +6,6 @@ var crypto = require('crypto');
 
 let repository = {};
 
-function addToRepository({ question, answer }) {}
-
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
   res.setHeader(
