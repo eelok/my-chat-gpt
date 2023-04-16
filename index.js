@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const { openAPIconfig } = require('./openAIConfig');
 require('dotenv').config();
-var crypto = require('crypto');
 
 let repository = [];
 let counter = 0;
