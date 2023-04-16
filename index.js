@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const { openAPIconfig } = require('./openAIConfig');
 require('dotenv').config();
+var crypto = require('crypto');
+
+let repository = {};
+
+function addToRepository({ question, answer }) {}
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
@@ -31,9 +36,20 @@ app.post('/ask', async (req, res) => {
       temperature: 0.6,
     });
     const completion = responseBot.data.choices[0].text;
+
+    const id = crypto.randomBytes(16).toString('hex');
+    repository[id] = {
+      question: prompt,
+      answer: completion,
+    };
     return res.status(200).json({
       success: true,
-      message: completion,
+      object: repository[id],
+    });
+    return res.status(200).json({
+      success: true,
+      // message: 'Hello I try to save your many',
+      message: repository[id],
     });
   } catch (err) {
     console.log(err.message);
